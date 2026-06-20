@@ -34,7 +34,7 @@ body {
   border: 5px solid #4B6F8A;
   padding: 56px 76px;
   width: min(100%, 1440px);
-  min-height: 62vh;
+  min-height: auto;
 }
 
 .track {
@@ -57,6 +57,7 @@ body {
 
 .title {
   white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 800px) {
@@ -83,6 +84,7 @@ body {
 
   .title {
     white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 </style>
@@ -121,11 +123,15 @@ document.querySelectorAll(".title").forEach(title => {
 
   
 
+  const isMobile = window.matchMedia("(max-width: 700px)").matches;
+
   const hoverText =
     original === "bloodbath"
       ? "_bloodbath"
       : original === "teleprompter"
       ? "_teleprompter"
+      : original === "don't associate me with them." && isMobile
+      ? "dont_associate"
       : filenameVersion(original);
 
   title.addEventListener("mouseenter", () => {
