@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kid_blue</title>
-  <link rel="icon" type="image/png" href="ico.png">
+
 <style>
 * {
   margin: 0;
@@ -27,12 +27,6 @@ body {
   display: block;
   width: min(38vw, 520px);
   margin-bottom: 48px;
-   transition: opacity .2s ease;
-}
-
-
-.logo:hover {
-  opacity: .8;
 }
 
 .track-box {
@@ -125,16 +119,37 @@ body {
   }
 }
 
+
+.logo {
+  opacity: 0;
+  animation: logoReveal 0.8s ease forwards;
+}
+
+.track-box,
+.footer-note {
+  opacity: 0;
+  animation: contentReveal 0.8s ease forwards;
+  animation-delay: 0.45s;
+}
+
+@keyframes logoReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes contentReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 </style>
 </head>
 
 <body>
 
 <main class="page">
-  <a href="https://open.spotify.com/album/0lxahfJTZNRPjF5NgTnVJU?si=bzmUeT3bTGq-Z6i50tTDmw" target="_blank" rel="noopener noreferrer">
-  <img class="logo" src="kidblue_final.png" alt="kid_blue">
-</a>
-  
+  <a href="https://open.spotify.com/album/0lxahfJTZNRPjF5NgTnVJU?si=bzmUeT3bTGq-Z6i50tTDmw" target="_blank" rel="noopener noreferrer"><img class="logo" src="kidblue_final.png" alt="kid_blue"></a>
+
   <section class="track-box" aria-label="Track list">
     <div class="track"><span class="number">01.</span><span class="title">bloodbath</span></div>
     <div class="track"><span class="number">02.</span><span class="title">take me out</span></div>
@@ -148,7 +163,7 @@ body {
     <div class="track"><span class="number">10.</span><span class="title">i know you</span></div>
   </section>
 
-  <div class="footer-note">coming_26626</div>
+  <div class="footer-note">coming 26626</div>
 </main>
 
 <script>
@@ -172,7 +187,7 @@ document.querySelectorAll(".title").forEach(title => {
       ? "_bloodbath"
       : original === "teleprompter"
       ? "_teleprompter"
-      : original === "don't associate me with them." && isMobile
+      : original === "don't associate me with them" && isMobile
       ? "dont_associate"
       : filenameVersion(original);
 
